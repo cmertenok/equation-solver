@@ -36,7 +36,7 @@ func equationSolver(values []float64) []float64 {
 func interactiveMode() []float64 {
 
 	var param []float64
-	var args = []string{"a", "b", "c"}
+	var args = []string{"A", "B", "C"}
 
 	var reader = bufio.NewReader(os.Stdin)
 
@@ -68,6 +68,69 @@ func interactiveMode() []float64 {
 	return param
 }
 
+func nonInteractiveMod(fileName string) []float64 {
+
+	var parameters []float64
+
+	file, err := os.ReadFile(fileName) 
+
+	if err != nil {
+	  fmt.Println("Error occured while trying to open file", err)
+	  os.Exit(1)
+	}
+
+	str :=strings.Fields(string(file))
+
+	if len(str) != 3 {
+	  fmt.Fprint(os.Stderr, "Error. Wrong number of parameters. Must be 3 \n")
+	  os.Exit(1)
+	}
+
+	for index, values := range str {
+	 params, err := strconv.ParseFloat(values, 64)
+
+	 if err != nil {
+	  fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+	  os.Exit(1)
+	 }
+
+	 if index == 0 && params == 0 {
+	  fmt.Print("Error. a cannot be 0\n")
+		os.Exit(1)
+	 }
+
+	  parameters = append(parameters,params)
+	}
+
+	return parameters
+ }
+
 func main() {
+
+  var fileName string
+  var input []float64 
+  var results []float64
+
+  if len(os.Args) > 1 {
+    fileName = os.Args[1]
+  }
+
+  if fileName != "" {
+    input = nonInteractiveMod(fileName)
+  } else {
+    input = interactiveMode()
+  }
+
+  results = equationSolver(input)
+
+  fmt.Printf("Equation: %.2fX^2 + %.2fX + %.2f = 0\n", input[0], input[1], input[2])
+
+  if len(results) == 1 {
+    fmt.Printf("X1 = %f\n", results[0])
+  } else if len(results) == 2 {
+    fmt.Printf("X1 = %f\nX2 = %f\n", results[0], results[1])
+  }
+
+  fmt.Printf("The equation has %d roots", len(results))
 
 }
