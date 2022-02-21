@@ -1,6 +1,3 @@
-# SDM-Quadratic-Equations
-Software Development Methods."Console application for solving quadratic equations".
-
 # Equation-solver
 This simple CLI application can be used to solve quadratic equations
 
@@ -26,28 +23,20 @@ $ git clone https://github.com/cmertenok/equation-solver.git
 
 Make sure to have this repository cloned and open and run `go install`
 
-## Usage
-
-This application includes two modes: interactive and file modes
-
-To use interactive mode, simply call `sample-app` command and import the parameters of your equation
+#### Interactive Mode
+To start in interactive mode simply type *go run* command with the name of the source file.
 
 ```
-$ equation-solver
-a = 2
-b = 4
-c = 2
+go run main.go
 ```
-
-To use file mode, make sure you have a file containing real numbers with a space between each, like this:
-
-Example:
+#### Non-interactive Mode
+In non-interactive mode you need to have a file in .txt format containing three numbers (more or less numbers result in an error) divided by spaces. 
+Example of file structure:
 ```
-1 2 3
+2 1 -3
 ```
-
-Then run the following command:
-
+To start the application type the same command as in interactive mode, but add a file name to the end. 
+For example test.txt:
 ```
-$ sample-appr test.txt
+go run main.go test.txt
 ```
