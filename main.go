@@ -1,19 +1,33 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
+	"math"
 )
 
-func main() {
-	var x, y float64
-  var output float64
+func equationSolver(values []float64) []float64 {
+	var roots []float64
 
-	fmt.Print("Entert your first number: ")
-	fmt.Scan(&x)
-	fmt.Print("Entert your second number: ")
-	fmt.Scan(&y)
-	
-  output = (x + y)
-  
-  fmt.Print("Result: ", output)
+	var (
+		numA = values[0]
+		numB = values[1]
+		numC = values[2]
+	)
+
+	var discriminant = (numB * numB) - (4 * numA * numC)
+
+	if discriminant == 0 {
+		var root = -numB / (2 * numA)
+		roots = append(roots, root)
+	} else if discriminant > 0 {
+		var firstRoot = (-numB + math.Sqrt(discriminant)) / (2 * numA)
+		var secondRoot = (-numB - math.Sqrt(discriminant)) / (2 * numA)
+		roots = append(roots, firstRoot, secondRoot)
+	}
+
+	return roots
+}
+
+func main() {
+
 }
