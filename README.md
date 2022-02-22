@@ -23,13 +23,13 @@ $ git clone https://github.com/cmertenok/equation-solver.git
 
 Make sure to have this repository cloned and open and run `go install`
 
-#### Interactive Mode
+## Interactive Mode
 To start in interactive mode simply type *go run* command with the name of the source file.
 
 ```
 go run main.go
 ```
-#### Non-interactive Mode
+## NonInteractive Mode
 In non-interactive mode you need to have a file in .txt format containing three numbers (more or less numbers result in an error) divided by spaces. 
 Example of file structure:
 ```
