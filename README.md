@@ -40,3 +40,6 @@ For example test.txt:
 ```
 go run main.go test.txt
 ```
+## Revert commit
+
+[299294c753d64ca78e7242164eb3f2e65817104b](https://github.com/cmertenok/equation-solver/commit/299294c753d64ca78e7242164eb3f2e65817104b) 
